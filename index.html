@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendTech | Manufacturing Excellence</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Section -->
+                <div class="flex-shrink-0 flex items-center ml-1">
+                    <img src="images/TrendTech Logo final.png" 
+                         alt="TrendTech Logo" 
+                         class="h-28 w-auto object-contain">
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-slate-600 hover:text-blue-700 font-medium transition-colors">Home</a>
+                    <a href="#about" class="text-slate-600 hover:text-blue-700 font-medium transition-colors">About</a>
+                    <a href="#catalog" class="text-slate-600 hover:text-blue-700 font-medium transition-colors">Catalog</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-blue-700 text-white font-medium rounded-full hover:bg-blue-800 transition-colors shadow-lg shadow-blue-700/20">Contact Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none">
+                        <i class="ph ph-list text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="mobile-link block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-700 rounded-md">Home</a>
+                <a href="#about" class="mobile-link block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-700 rounded-md">About</a>
+                <a href="#catalog" class="mobile-link block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-700 rounded-md">Catalog</a>
+                <a href="#contact" class="mobile-link block px-3 py-2 text-base font-medium text-blue-700 font-bold rounded-md">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section (Split Layout) -->
+    <section id="home" class="min-h-screen flex flex-col md:grid md:grid-cols-2 pt-20">
+        
+        <!-- Left Side: Content -->
+        <!-- Added bg-slate-900 to keep white text readable and professional -->
+        <div class="order-2 md:order-1 flex flex-col justify-center px-6 sm:px-12 lg:px-16 py-12 bg-slate-900">
+            <div class="max-w-xl mx-auto md:mx-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+                    Weaving Quality into <span class="text-blue-400">Every Thread</span>
+                </h1>
+                <p class="text-lg text-slate-300 mb-8 font-light leading-relaxed">
+                    Premium manufacturer of Monofilament, Zipper Rolls, and Nivar Belts. Powering industries with durability and precision.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#catalog" class="px-8 py-3.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-600/30 text-center">
+                        View Catalog
+                    </a>
+                    <a href="#contact" class="px-8 py-3.5 bg-transparent border border-slate-600 text-white font-semibold rounded-lg hover:bg-white hover:text-slate-900 transition-all text-center">
+                        Get in Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Image -->
+        <!-- order-1 ensures image is on top for mobile, right for desktop -->
+        <div class="order-1 md:order-2 relative h-64 md:h-full w-full overflow-hidden">
+            <img src="images/factoryimage.jpeg" 
+                 alt="TrendTech Factory" 
+                 class="absolute inset-0 w-full h-full object-cover scale-500 transition-transform duration-700">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-2">Who We Are</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Excellence in Industrial Manufacturing</h3>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        At <span class="font-bold text-slate-900">TrendTech</span>, we specialize in the production of high-tenacity monofilaments, durable zipper rolls, and industrial-grade nivar belts tailored for bag manufacturing.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        Established with a vision to revolutionize the textile components industry, our state-of-the-art facility ensures that every meter of material we produce meets global quality standards.
+                    </p>
+                    <div class="pt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <div class="bg-blue-100 p-2.5 rounded-lg text-blue-600"><i class="ph ph-shield-check text-2xl"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Quality Assured</h4>
+                                <p class="text-sm text-slate-500 mt-1">Rigorous testing for strength and durability.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <div class="bg-blue-100 p-2.5 rounded-lg text-blue-600"><i class="ph ph-trend-up text-2xl"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">High Capacity</h4>
+                                <p class="text-sm text-slate-500 mt-1">Ready to meet large scale bulk orders.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1563968743333-044cef800494?q=80&w=2543&auto=format&fit=crop" alt="Manufacturing Process" class="relative z-10 rounded-2xl shadow-2xl w-full object-cover h-[400px] hover:scale-[1.02] transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section id="catalog" class="py-20 md:py-32 bg-slate-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-2">Our Products</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Product Catalog</h3>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="scrollCatalog('left')" class="p-3 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"><i class="ph-bold ph-arrow-left text-xl"></i></button>
+                    <button onclick="scrollCatalog('right')" class="p-3 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"><i class="ph-bold ph-arrow-right text-xl"></i></button>
+                </div>
+            </div>
+            <div id="catalog-slider" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-10">
+                <!-- Products -->
+                <div class="min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1615486979603-0c4871032dfa?q=80&w=2070&auto=format&fit=crop" alt="Monofilament" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-slate-900 mb-2">Monofilament Yarns</h4>
+                        <p class="text-slate-500 text-sm mb-4">High-tensile strength yarns perfect for industrial weaving.</p>
+                    </div>
+                </div>
+                <div class="min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://plus.unsplash.com/premium_photo-1673549247385-e7b3075c317f?q=80&w=2070&auto=format&fit=crop" alt="Zipper Rolls" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-slate-900 mb-2">Zipper Rolls</h4>
+                        <p class="text-slate-500 text-sm mb-4">Continuous long-chain zippers designed for smooth operation.</p>
+                    </div>
+                </div>
+                <div class="min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1620799140408-ed5341cd2431?q=80&w=2072&auto=format&fit=crop" alt="Nivar Belts" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-slate-900 mb-2">Nivar Belts</h4>
+                        <p class="text-slate-500 text-sm mb-4">Heavy-duty webbing straps for bag handles and backpacks.</p>
+                    </div>
+                </div>
+                <div class="min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1549488497-60e7e60e86b2?q=80&w=2071&auto=format&fit=crop" alt="Raw Materials" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-slate-900 mb-2">Raw Polymer Material</h4>
+                        <p class="text-slate-500 text-sm mb-4">Premium grade granules ensuring the best output.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-2">Contact Us</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">We're Here to Help</h3>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                
+                <!-- Left Side: Map & Contact Info -->
+                <div class="space-y-8">
+                    <!-- Map Card -->
+                    <a href="https://www.google.com/maps/dir//622H%2BR4,+Alura,+Gujarat+394310/@19.1266816,72.9284608,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3be043006e021cb7:0x3aae5447983cd54b!2m2!1d73.027865!2d21.202024?entry=ttu" target="_blank" class="block group relative w-full h-64 bg-slate-200 rounded-2xl overflow-hidden shadow-md">
+                        <!-- Static Map Image Placeholder -->
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?q=80&w=2831&auto=format&fit=crop');"></div>
+                        <div class="absolute inset-0 bg-slate-900/30 group-hover:bg-slate-900/10 transition-colors"></div>
+                        
+                        <!-- Map Marker Overlay -->
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="bg-white/90 backdrop-blur p-3 rounded-full shadow-lg group-hover:-translate-y-2 transition-transform duration-300">
+                                <i class="ph-fill ph-map-pin text-3xl text-red-500"></i>
+                            </div>
+                            <span class="mt-3 px-4 py-2 bg-white text-slate-900 font-bold rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0 text-sm">
+                                Open Factory Location
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- Address Block -->
+                    <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 flex items-start gap-4">
+                        <div class="bg-blue-100 p-2.5 rounded-lg text-blue-600 shrink-0">
+                            <i class="ph-fill ph-buildings text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Our Address</h4>
+                            <p class="text-slate-600 mt-1">622H+R4, Alura, Gujarat 394310</p>
+                        </div>
+                    </div>
+
+                    <!-- Info Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                            <i class="ph-fill ph-phone text-2xl text-blue-600 mb-3"></i>
+                            <h5 class="font-bold text-slate-900">Phone</h5>
+                            <p class="text-slate-500 mt-1">+91 9819664261</p>
+                        </div>
+                        <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                            <i class="ph-fill ph-envelope-simple text-2xl text-blue-600 mb-3"></i>
+                            <h5 class="font-bold text-slate-900">Email</h5>
+                            <p class="text-slate-500 mt-1">trendtech.niwar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Query Form -->
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
+                    <h4 class="text-xl font-bold text-slate-900 mb-6">Send us a Query</h4>
+                    <form id="contact-form" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Name</label>
+                                <input type="text" name="name" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 outline-none transition-all" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Phone</label>
+                                <input type="tel" name="phone" placeholder="Your Number" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 outline-none transition-all" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+                            <input type="email" name="email" placeholder="you@company.com" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 outline-none transition-all" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                            <textarea name="message" rows="4" placeholder="Tell us about your requirements..." class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none" required></textarea>
+                        </div>
+                        <button id="submit-btn" type="submit" class="w-full py-3.5 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transform hover:-translate-y-0.5 transition-all shadow-lg shadow-blue-600/20">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-sm text-slate-400">Designed and Developed by TrendTech IT Team</p>
+            <p class="text-slate-400 text-sm">© 2023 TrendTech Manufacturing. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

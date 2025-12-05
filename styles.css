@@ -1,0 +1,20 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Hides the scrollbar for the product slider to make it look clean */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Creates the fixed background image effect (Parallax) */
+.bg-fixed-custom {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
