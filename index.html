@@ -157,7 +157,7 @@
                 </div>
 
                 <!-- Nivar Belts Card -->
-                <div class="product-card min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group cursor-pointer" data-images='["image1.jpeg", "image2.jpeg", "image3.jpeg", "image4.jpeg", "image6.jpeg", "image7.jpeg"]'>
+                <div class="product-card min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group cursor-pointer" data-images='["image1.jpeg", "image2.jpg", "image3.jpeg", "image4.jpeg", "image6.jpeg", "image7.jpeg"]'>
                     <div class="h-64 overflow-hidden relative">
                         <img src="image1.jpeg" alt="Nivar Belts" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
@@ -269,19 +269,26 @@
 
     <!-- Lightbox Modal -->
     <div id="lightbox" class="fixed inset-0 bg-black/95 hidden z-[100] flex items-center justify-center transition-opacity duration-300 opacity-0">
-        <div class="relative w-full max-w-5xl h-full flex flex-col items-center justify-center px-4 pb-20 md:pb-24">
-            <div id="image-container" class="relative w-full h-[65vh] md:h-[80vh] overflow-hidden select-none touch-pan-x">
-                <img id="lightbox-img" src="" alt="Product image" 
-                     class="absolute inset-0 w-full h-full object-contain transition-transform duration-300">
+        <div class="relative w-full max-w-5xl px-4 flex flex-col min-h-screen">
+            
+            <!-- Header area for close button (always at top, outside image) -->
+            <div class="w-full pt-4 md:pt-6 pb-2 flex justify-end">
+                <button id="close-lightbox" 
+                        class="text-white text-5xl hover:text-red-400 transition-colors z-30">
+                    ×
+                </button>
             </div>
 
-            <div id="dots-container" class="absolute bottom-6 left-0 right-0 flex justify-center gap-3 z-10"></div>
+            <!-- Image container – takes remaining space, centers image -->
+            <div id="image-container" class="flex-1 flex items-center justify-center overflow-hidden select-none touch-pan-x">
+                <img id="lightbox-img" src="" alt="Product image" 
+                    class="max-w-full max-h-[70vh] md:max-h-[80vh] object-contain transition-transform duration-300">
+            </div>
 
-            <button id="close-lightbox" 
-                    class="absolute top-4 right-4 md:top-6 md:right-8 text-white text-5xl hover:text-red-400 transition-colors z-20">
-                ×
-            </button>
+            <!-- Dots – always at bottom, outside image -->
+            <div id="dots-container" class="w-full py-4 pb-8 md:pb-6 flex justify-center gap-4 z-10"></div>
 
+            <!-- Desktop arrows -->
             <button id="prev-btn" 
                     class="hidden md:block absolute left-6 top-1/2 -translate-y-1/2 text-white text-7xl hover:text-blue-400 transition-colors z-20">
                 ←
@@ -296,4 +303,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
