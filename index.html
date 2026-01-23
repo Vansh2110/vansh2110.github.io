@@ -20,7 +20,7 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo Section -->
                 <div class="flex-shrink-0 flex items-center ml-1">
-                    <img src="TrendTech Logo final.png" 
+                    <img src="logo.png" 
                          alt="TrendTech Logo" 
                          class="h-28 w-auto object-contain">
                 </div>
@@ -28,7 +28,7 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="text-slate-600 hover:text-blue-700 font-medium transition-colors">Home</a>
                     <a href="#about" class="text-slate-600 hover:text-blue-700 font-medium transition-colors">About</a>
-                    <a href="#catalog" class="text-slate-600 hover:text-blue-700 font-medium transition-colors">Catalog</a>
+                    <a href="#catalogue" class="text-slate-600 hover:text-blue-700 font-medium transition-colors">Catalogue</a>
                     <a href="#contact" class="px-5 py-2.5 bg-blue-700 text-white font-medium rounded-full hover:bg-blue-800 transition-colors shadow-lg shadow-blue-700/20">Contact Us</a>
                 </div>
                 <div class="md:hidden flex items-center">
@@ -42,7 +42,7 @@
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#home" class="mobile-link block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-700 rounded-md">Home</a>
                 <a href="#about" class="mobile-link block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-700 rounded-md">About</a>
-                <a href="#catalog" class="mobile-link block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-700 rounded-md">Catalog</a>
+                <a href="#catalogue" class="mobile-link block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-700 rounded-md">Catalog</a>
                 <a href="#contact" class="mobile-link block px-3 py-2 text-base font-medium text-blue-700 font-bold rounded-md">Contact Us</a>
             </div>
         </div>
@@ -62,8 +62,8 @@
                     Premium manufacturer of Monofilament, Zipper Rolls, and Nivar Belts. Powering industries with durability and precision.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#catalog" class="px-8 py-3.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-600/30 text-center">
-                        View Catalog
+                    <a href="#catalogue" class="px-8 py-3.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-600/30 text-center">
+                        View Catalogue
                     </a>
                     <a href="#contact" class="px-8 py-3.5 bg-transparent border border-slate-600 text-white font-semibold rounded-lg hover:bg-white hover:text-slate-900 transition-all text-center">
                         Get in Touch
@@ -121,57 +121,73 @@
         </div>
     </section>
 
-    <!-- Catalog Section -->
-    <section id="catalog" class="py-20 md:py-32 bg-slate-50 overflow-hidden">
+    <!-- Catalogue Section -->
+    <section id="catalogue" class="py-20 md:py-32 bg-slate-50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="flex justify-between items-end mb-12">
                 <div>
                     <h2 class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-2">Our Products</h2>
-                    <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Product Catalog</h3>
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Product Catalogue</h3>
                 </div>
-                <div class="flex gap-2">
-                    <button onclick="scrollCatalog('left')" class="p-3 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"><i class="ph-bold ph-arrow-left text-xl"></i></button>
-                    <button onclick="scrollCatalog('right')" class="p-3 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"><i class="ph-bold ph-arrow-right text-xl"></i></button>
+                <div class="flex gap-2 hidden md:flex">  <!-- Hide arrows on mobile (md:hidden would show on mobile; here hidden md:flex hides on mobile) -->
+                    <button onclick="scrollCatalogue('left')" class="p-3 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        <i class="ph-bold ph-arrow-left text-xl"></i>
+                    </button>
+                    <button onclick="scrollCatalogue('right')" class="p-3 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        <i class="ph-bold ph-arrow-right text-xl"></i>
+                    </button>
                 </div>
             </div>
-            <div id="catalog-slider" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-10">
-                <!-- Products -->
-                <div class="min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group">
+            <div id="catalogue-slider" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-10 select-none"> 
+
+                <!-- Monofilament Yarns -->
+                <div class="product-card min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group cursor-pointer" 
+                    data-images='["https://sagezander.com/wp-content/uploads/2021/06/AdobeStock_98061917-e1650617670280.jpeg", "https://www.plasco.com.tw/UserFiles/kindeditor/image/20230204/High-Accuracy-Monofilament-Yarn-Making-Machine-m-730x450-01.jpg", "https://www.monofilamentextruder.com/data/watermark/20250618/6852742d39784.jpg"]'>
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1615486979603-0c4871032dfa?q=80&w=2070&auto=format&fit=crop" alt="Monofilament" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="https://sagezander.com/wp-content/uploads/2021/06/AdobeStock_98061917-e1650617670280.jpeg" alt="Monofilament Yarns" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
                     <div class="p-6">
                         <h4 class="text-xl font-bold text-slate-900 mb-2">Monofilament Yarns</h4>
-                        <p class="text-slate-500 text-sm mb-4">High-tensile strength yarns perfect for industrial weaving.</p>
+                        <p class="text-slate-500 text-sm mb-4">High-tensile strength yarns perfect for industrial weaving and sewing applications.</p>
                     </div>
                 </div>
-                <div class="min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group">
+
+                <!-- Zipper Rolls -->
+                <div class="product-card min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group cursor-pointer" 
+                    data-images='["https://cdn.shopify.com/s/files/1/0760/9932/2148/collections/IMG_2317.jpg?v=1708637596", "https://ripstopbytheroll.com/cdn/shop/products/Matte_vs_Shiny_zipper_2000x.jpg?v=1592290296", "https://www.zipperstop.com/cdn/shop/files/s-l16002_20f77afa-1a9f-4c48-aae6-f5546ce3c1f6.jpg?v=1714268235&width=1100"]'>
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://plus.unsplash.com/premium_photo-1673549247385-e7b3075c317f?q=80&w=2070&auto=format&fit=crop" alt="Zipper Rolls" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="https://cdn.shopify.com/s/files/1/0760/9932/2148/collections/IMG_2317.jpg?v=1708637596" alt="Zipper Rolls" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
                     <div class="p-6">
                         <h4 class="text-xl font-bold text-slate-900 mb-2">Zipper Rolls</h4>
-                        <p class="text-slate-500 text-sm mb-4">Continuous long-chain zippers designed for smooth operation.</p>
+                        <p class="text-slate-500 text-sm mb-4">Continuous long-chain zippers designed for smooth operation in luggage and apparel.</p>
                     </div>
                 </div>
-                <div class="min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group">
+
+                <!-- Nivar Belts -->
+                <div class="product-card min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group cursor-pointer" 
+                    data-images='["niwar belt/image1.jpeg", "niwar belt/image2.jpeg", "niwar belt/image3.jpeg", "niwar belt/image4.jpeg", "niwar belt/image6.jpeg", "niwar belt/image7.jpeg"]'>
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1620799140408-ed5341cd2431?q=80&w=2072&auto=format&fit=crop" alt="Nivar Belts" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="niwar belt/image1.jpeg" alt="Nivar Belts" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
                     <div class="p-6">
                         <h4 class="text-xl font-bold text-slate-900 mb-2">Nivar Belts</h4>
                         <p class="text-slate-500 text-sm mb-4">Heavy-duty webbing straps for bag handles and backpacks.</p>
                     </div>
                 </div>
-                <div class="min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group">
+
+                <!-- Raw Polymer Material -->
+                <div class="product-card min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group cursor-pointer" 
+                    data-images='["https://www.zarifindustrial.com/wp-content/uploads/2024/04/%E2%80%8C3-%DA%AF%D8%B1%D8%A7%D9%86%D9%88%D9%84-%D9%88%DB%8C%D8%B1%D8%AC%DB%8C%D9%86-%D9%BE%D9%84%DB%8C-%D9%BE%D8%B1%D9%88%D9%BE%DB%8C%D9%84%D9%86-PP.jpg", "https://image.made-in-china.com/2f0j00gLfkEqwMsGbT/Raw-Material-Textile-Grade-Pet-Chips-for-Low-Melt-Yarn.webp", "https://www.zarifindustrial.com/wp-content/uploads/2024/04/2-%DA%AF%D8%B1%D8%A7%D9%86%D9%88%D9%84-%D9%88%DB%8C%D8%B1%D8%AC%DB%8C%D9%86-%D9%BE%D9%84%DB%8C-%D8%A7%D9%85%DB%8C%D8%AF-PA-1.jpg"]'>
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1549488497-60e7e60e86b2?q=80&w=2071&auto=format&fit=crop" alt="Raw Materials" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="https://www.zarifindustrial.com/wp-content/uploads/2024/04/%E2%80%8C3-%DA%AF%D8%B1%D8%A7%D9%86%D9%88%D9%84-%D9%88%DB%8C%D8%B1%D8%AC%DB%8C%D9%86-%D9%BE%D9%84%DB%8C-%D9%BE%D8%B1%D9%88%D9%BE%DB%8C%D9%84%D9%86-PP.jpg" alt="Raw Polymer Material" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
                     <div class="p-6">
                         <h4 class="text-xl font-bold text-slate-900 mb-2">Raw Polymer Material</h4>
                         <p class="text-slate-500 text-sm mb-4">Premium grade granules ensuring the best output.</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -272,12 +288,38 @@
         </div>
     </footer>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 hidden z-[100] flex items-center justify-center transition-opacity duration-300 opacity-0 touch-none">
+        <div class="relative w-full max-w-5xl h-full flex flex-col items-center justify-center px-4 pb-16 md:pb-20">
+            
+            <!-- Main image container with swipe support -->
+            <div id="image-container" class="relative w-full h-[70vh] md:h-[80vh] overflow-hidden select-none">
+                <img id="lightbox-img" src="" alt="Product image" 
+                    class="absolute inset-0 w-full h-full object-contain transition-transform duration-300">
+            </div>
+
+            <!-- Dots indicator -->
+            <div id="dots-container" class="absolute bottom-6 left-0 right-0 flex justify-center gap-3 z-10"></div>
+
+            <!-- Close button -->
+            <button id="close-lightbox" 
+                    class="absolute top-4 right-4 md:top-6 md:right-8 text-white text-5xl hover:text-red-400 transition-colors z-20">
+                ×
+            </button>
+
+            <!-- Navigation arrows (visible on desktop, optional on mobile) -->
+            <button id="prev-btn" 
+                    class="hidden md:block absolute left-6 top-1/2 -translate-y-1/2 text-white text-7xl hover:text-blue-400 transition-colors z-20">
+                ←
+            </button>
+            <button id="next-btn" 
+                    class="hidden md:block absolute right-6 top-1/2 -translate-y-1/2 text-white text-7xl hover:text-blue-400 transition-colors z-20">
+                →
+            </button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 
 </html>
-
-
-
-
-
