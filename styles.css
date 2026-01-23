@@ -18,3 +18,31 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/* Optional: Cursor change for drag indication */
+#catalogue-slider {
+    cursor: grab;
+}
+#catalogue-slider.active {
+    cursor: grabbing;
+}
+
+/* Lightbox enhancements */
+#image-container {
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-y;   /* allows vertical scroll of page if needed */
+}
+
+#image-container:active {
+    cursor: grabbing;
+}
+
+#dots-container button {
+    transition: all 0.25s ease;
+}
+
+#dots-container button:hover {
+    transform: scale(1.3);
+}
