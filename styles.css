@@ -11,12 +11,38 @@ body {
     scrollbar-width: none;
 }
 
-/* Creates the fixed background image effect (Parallax) */
-.bg-fixed-custom {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+/* ────────────────────────────────────────────────
+   Logo – strong fix for dark mode halo on iOS/Safari
+───────────────────────────────────────────────── */
+
+.logo-img {
+    image-rendering: -webkit-optimize-contrast;
+    transform: translateZ(0);
+    transition: filter 0.3s ease;
+}
+
+/* Light mode – keep clean */
+.logo-img {
+    filter: none;
+}
+
+/* Dark mode – visible separation from dark background */
+.dark .logo-img {
+    filter: 
+        drop-shadow(0 0 8px rgba(255, 255, 255, 0.6)) 
+        drop-shadow(0 0 16px rgba(255, 255, 255, 0.3)) 
+        brightness(1.12) 
+        contrast(1.08);
+}
+
+/* Extra iOS/Safari hardening */
+@supports (-webkit-touch-callout: none) {
+    .dark .logo-img {
+        filter: 
+            drop-shadow(0 0 10px rgba(255, 255, 255, 0.7)) 
+            brightness(1.15) 
+            contrast(1.12) !important;
+    }
 }
 
 /* Catalogue slider drag cursor */
@@ -47,22 +73,37 @@ body {
 }
 
 /* Lightbox improvements – especially for iPhone/Safari */
-#image-container {
-    touch-action: pan-x;
-    -webkit-overflow-scrolling: touch;
-    transform: translateZ(0);
+/* Lightbox layout fixes – iOS Safari safe positioning */
+#lightbox > div {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
-#lightbox-img {
-    image-rendering: -webkit-optimize-contrast;
-    transform: translateZ(0);
+#image-container img {
+    max-height: 70vh;                   /* cap image height */
+    width: auto;
+    height: auto;
 }
 
-/* Better vertical centering on mobile Safari */
-@supports (-webkit-touch-callout: none) {
-    #image-container {
-        height: 68vh !important;
-        max-height: 68vh;
+/* Ensure close button and dots are never overlapped by image */
+#close-lightbox {
+    position: relative;                 /* not absolute anymore */
+    margin-right: 1rem;
+}
+
+#dots-container {
+    background: rgba(0,0,0,0.3);        /* subtle background so dots are always visible */
+    border-radius: 9999px;
+    padding: 0.75rem 1.5rem;
+}
+
+/* iOS-specific safe area adjustments */
+@supports (padding-top: env(safe-area-inset-top)) {
+    #close-lightbox {
+        margin-top: env(safe-area-inset-top);
+    }
+    #dots-container {
+        padding-bottom: calc(1rem + env(safe-area-inset-bottom));
     }
 }
 
