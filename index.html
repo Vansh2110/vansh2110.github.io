@@ -22,7 +22,7 @@
                 <div class="flex-shrink-0 flex items-center ml-1">
                     <img src="logo.png" 
                          alt="TrendTech Logo" 
-                         class="h-28 w-auto object-contain">
+                         class="h-28 w-auto object-contain logo-img">
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-8">
@@ -42,7 +42,7 @@
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#home" class="mobile-link block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-700 rounded-md">Home</a>
                 <a href="#about" class="mobile-link block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-700 rounded-md">About</a>
-                <a href="#catalogue" class="mobile-link block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-700 rounded-md">Catalog</a>
+                <a href="#catalogue" class="mobile-link block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-700 rounded-md">Catalogue</a>
                 <a href="#contact" class="mobile-link block px-3 py-2 text-base font-medium text-blue-700 font-bold rounded-md">Contact Us</a>
             </div>
         </div>
@@ -50,9 +50,6 @@
 
     <!-- Home Section (Split Layout) -->
     <section id="home" class="min-h-screen flex flex-col md:grid md:grid-cols-2 pt-20">
-        
-        <!-- Left Side: Content -->
-        <!-- Added bg-slate-900 to keep white text readable and professional -->
         <div class="order-2 md:order-1 flex flex-col justify-center px-6 sm:px-12 lg:px-16 py-12 bg-slate-900">
             <div class="max-w-xl mx-auto md:mx-0">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
@@ -72,8 +69,6 @@
             </div>
         </div>
 
-        <!-- Right Side: Image -->
-        <!-- order-1 ensures image is on top for mobile, right for desktop -->
         <div class="order-1 md:order-2 relative h-64 md:h-full w-full overflow-hidden">
             <img src="factoryimage.jpeg" 
                  alt="TrendTech Factory" 
@@ -129,7 +124,7 @@
                     <h2 class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-2">Our Products</h2>
                     <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Product Catalogue</h3>
                 </div>
-                <div class="flex gap-2 hidden md:flex">  <!-- Hide arrows on mobile (md:hidden would show on mobile; here hidden md:flex hides on mobile) -->
+                <div class="flex gap-2 hidden md:flex">
                     <button onclick="scrollCatalogue('left')" class="p-3 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                         <i class="ph-bold ph-arrow-left text-xl"></i>
                     </button>
@@ -138,11 +133,9 @@
                     </button>
                 </div>
             </div>
-            <div id="catalogue-slider" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-10 select-none"> 
-
-                <!-- Monofilament Yarns -->
-                <div class="product-card min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group cursor-pointer" 
-                    data-images='["https://sagezander.com/wp-content/uploads/2021/06/AdobeStock_98061917-e1650617670280.jpeg", "https://www.plasco.com.tw/UserFiles/kindeditor/image/20230204/High-Accuracy-Monofilament-Yarn-Making-Machine-m-730x450-01.jpg", "https://www.monofilamentextruder.com/data/watermark/20250618/6852742d39784.jpg"]'>
+            <div id="catalogue-slider" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-10 select-none">
+                <!-- Monofilament Yarns Card -->
+                <div class="product-card min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group cursor-pointer" data-images='["https://sagezander.com/wp-content/uploads/2021/06/AdobeStock_98061917-e1650617670280.jpeg", "https://www.plasco.com.tw/UserFiles/kindeditor/image/20230204/High-Accuracy-Monofilament-Yarn-Making-Machine-m-730x450-01.jpg", "https://www.monofilamentextruder.com/data/watermark/20250618/6852742d39784.jpg"]'>
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://sagezander.com/wp-content/uploads/2021/06/AdobeStock_98061917-e1650617670280.jpeg" alt="Monofilament Yarns" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
@@ -152,9 +145,8 @@
                     </div>
                 </div>
 
-                <!-- Zipper Rolls -->
-                <div class="product-card min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group cursor-pointer" 
-                    data-images='["https://cdn.shopify.com/s/files/1/0760/9932/2148/collections/IMG_2317.jpg?v=1708637596", "https://ripstopbytheroll.com/cdn/shop/products/Matte_vs_Shiny_zipper_2000x.jpg?v=1592290296", "https://www.zipperstop.com/cdn/shop/files/s-l16002_20f77afa-1a9f-4c48-aae6-f5546ce3c1f6.jpg?v=1714268235&width=1100"]'>
+                <!-- Zipper Rolls Card -->
+                <div class="product-card min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group cursor-pointer" data-images='["https://cdn.shopify.com/s/files/1/0760/9932/2148/collections/IMG_2317.jpg?v=1708637596", "https://ripstopbytheroll.com/cdn/shop/products/Matte_vs_Shiny_zipper_2000x.jpg?v=1592290296", "https://www.zipperstop.com/cdn/shop/files/s-l16002_20f77afa-1a9f-4c48-aae6-f5546ce3c1f6.jpg?v=1714268235&width=1100"]'>
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://cdn.shopify.com/s/files/1/0760/9932/2148/collections/IMG_2317.jpg?v=1708637596" alt="Zipper Rolls" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
@@ -164,9 +156,8 @@
                     </div>
                 </div>
 
-                <!-- Nivar Belts -->
-                <div class="product-card min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group cursor-pointer" 
-                    data-images='["image1.jpeg", "image2.jpeg", "image3.jpeg", "image4.jpeg", "image6.jpeg", "image7.jpeg"]'>
+                <!-- Nivar Belts Card -->
+                <div class="product-card min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group cursor-pointer" data-images='["image1.jpeg", "image2.jpg", "image3.jpeg", "image4.jpeg", "image6.jpeg", "image7.jpeg"]'>
                     <div class="h-64 overflow-hidden relative">
                         <img src="image1.jpeg" alt="Nivar Belts" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
@@ -176,9 +167,8 @@
                     </div>
                 </div>
 
-                <!-- Raw Polymer Material -->
-                <div class="product-card min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group cursor-pointer" 
-                    data-images='["https://www.zarifindustrial.com/wp-content/uploads/2024/04/%E2%80%8C3-%DA%AF%D8%B1%D8%A7%D9%86%D9%88%D9%84-%D9%88%DB%8C%D8%B1%D8%AC%DB%8C%D9%86-%D9%BE%D9%84%DB%8C-%D9%BE%D8%B1%D9%88%D9%BE%DB%8C%D9%84%D9%86-PP.jpg", "https://image.made-in-china.com/2f0j00gLfkEqwMsGbT/Raw-Material-Textile-Grade-Pet-Chips-for-Low-Melt-Yarn.webp", "https://www.zarifindustrial.com/wp-content/uploads/2024/04/2-%DA%AF%D8%B1%D8%A7%D9%86%D9%88%D9%84-%D9%88%DB%8C%D8%B1%D8%AC%DB%8C%D9%86-%D9%BE%D9%84%DB%8C-%D8%A7%D9%85%DB%8C%D8%AF-PA-1.jpg"]'>
+                <!-- Raw Polymer Material Card -->
+                <div class="product-card min-w-[300px] md:min-w-[380px] bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden snap-center group cursor-pointer" data-images='["https://www.zarifindustrial.com/wp-content/uploads/2024/04/%E2%80%8C3-%DA%AF%D8%B1%D8%A7%D9%86%D9%88%D9%84-%D9%88%DB%8C%D8%B1%D8%AC%DB%8C%D9%86-%D9%BE%D9%84%DB%8C-%D9%BE%D8%B1%D9%88%D9%BE%DB%8C%D9%84%D9%86-PP.jpg", "https://image.made-in-china.com/2f0j00gLfkEqwMsGbT/Raw-Material-Textile-Grade-Pet-Chips-for-Low-Melt-Yarn.webp", "https://www.zarifindustrial.com/wp-content/uploads/2024/04/2-%DA%AF%D8%B1%D8%A7%D9%86%D9%88%D9%84-%D9%88%DB%8C%D8%B1%D8%AC%DB%8C%D9%86-%D9%BE%D9%84%DB%8C-%D8%A7%D9%85%DB%8C%D8%AF-PA-1.jpg"]'>
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://www.zarifindustrial.com/wp-content/uploads/2024/04/%E2%80%8C3-%DA%AF%D8%B1%D8%A7%D9%86%D9%88%D9%84-%D9%88%DB%8C%D8%B1%D8%AC%DB%8C%D9%86-%D9%BE%D9%84%DB%8C-%D9%BE%D8%B1%D9%88%D9%BE%DB%8C%D9%84%D9%86-PP.jpg" alt="Raw Polymer Material" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
@@ -187,7 +177,6 @@
                         <p class="text-slate-500 text-sm mb-4">Premium grade granules ensuring the best output.</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -202,16 +191,10 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-                
-                <!-- Left Side: Map & Contact Info -->
                 <div class="space-y-8">
-                    <!-- Map Card -->
                     <a href="https://www.google.com/maps/dir//622H%2BR4,+Alura,+Gujarat+394310/@19.1266816,72.9284608,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3be043006e021cb7:0x3aae5447983cd54b!2m2!1d73.027865!2d21.202024?entry=ttu" target="_blank" class="block group relative w-full h-64 bg-slate-200 rounded-2xl overflow-hidden shadow-md">
-                        <!-- Static Map Image Placeholder -->
                         <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?q=80&w=2831&auto=format&fit=crop');"></div>
                         <div class="absolute inset-0 bg-slate-900/30 group-hover:bg-slate-900/10 transition-colors"></div>
-                        
-                        <!-- Map Marker Overlay -->
                         <div class="absolute inset-0 flex flex-col items-center justify-center">
                             <div class="bg-white/90 backdrop-blur p-3 rounded-full shadow-lg group-hover:-translate-y-2 transition-transform duration-300">
                                 <i class="ph-fill ph-map-pin text-3xl text-red-500"></i>
@@ -222,7 +205,6 @@
                         </div>
                     </a>
 
-                    <!-- Address Block -->
                     <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 flex items-start gap-4">
                         <div class="bg-blue-100 p-2.5 rounded-lg text-blue-600 shrink-0">
                             <i class="ph-fill ph-buildings text-2xl"></i>
@@ -233,7 +215,6 @@
                         </div>
                     </div>
 
-                    <!-- Info Cards -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
                             <i class="ph-fill ph-phone text-2xl text-blue-600 mb-3"></i>
@@ -248,7 +229,6 @@
                     </div>
                 </div>
 
-                <!-- Right Side: Query Form -->
                 <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
                     <h4 class="text-xl font-bold text-slate-900 mb-6">Send us a Query</h4>
                     <form id="contact-form" class="space-y-5">
@@ -275,7 +255,6 @@
                         </button>
                     </form>
                 </div>
-
             </div>
         </div>
     </section>
@@ -289,25 +268,20 @@
     </footer>
 
     <!-- Lightbox Modal -->
-    <div id="lightbox" class="fixed inset-0 bg-black/90 hidden z-[100] flex items-center justify-center transition-opacity duration-300 opacity-0 touch-none">
-        <div class="relative w-full max-w-5xl h-full flex flex-col items-center justify-center px-4 pb-16 md:pb-20">
-            
-            <!-- Main image container with swipe support -->
-            <div id="image-container" class="relative w-full h-[70vh] md:h-[80vh] overflow-hidden select-none">
+    <div id="lightbox" class="fixed inset-0 bg-black/95 hidden z-[100] flex items-center justify-center transition-opacity duration-300 opacity-0">
+        <div class="relative w-full max-w-5xl h-full flex flex-col items-center justify-center px-4 pb-20 md:pb-24">
+            <div id="image-container" class="relative w-full h-[65vh] md:h-[80vh] overflow-hidden select-none touch-pan-x">
                 <img id="lightbox-img" src="" alt="Product image" 
-                    class="absolute inset-0 w-full h-full object-contain transition-transform duration-300">
+                     class="absolute inset-0 w-full h-full object-contain transition-transform duration-300">
             </div>
 
-            <!-- Dots indicator -->
             <div id="dots-container" class="absolute bottom-6 left-0 right-0 flex justify-center gap-3 z-10"></div>
 
-            <!-- Close button -->
             <button id="close-lightbox" 
                     class="absolute top-4 right-4 md:top-6 md:right-8 text-white text-5xl hover:text-red-400 transition-colors z-20">
                 ×
             </button>
 
-            <!-- Navigation arrows (visible on desktop, optional on mobile) -->
             <button id="prev-btn" 
                     class="hidden md:block absolute left-6 top-1/2 -translate-y-1/2 text-white text-7xl hover:text-blue-400 transition-colors z-20">
                 ←
@@ -321,7 +295,4 @@
 
     <script src="script.js"></script>
 </body>
-
 </html>
-
-
