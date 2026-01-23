@@ -19,7 +19,7 @@ body {
     background-size: cover;
 }
 
-/* Optional: Cursor change for drag indication */
+/* Catalogue slider drag cursor */
 #catalogue-slider {
     cursor: grab;
 }
@@ -27,20 +27,51 @@ body {
     cursor: grabbing;
 }
 
-/* Lightbox enhancements */
+/* Logo improvements – especially for dark mode & iOS Safari */
+.logo-img {
+    transition: filter 0.3s ease, transform 0.2s ease;
+    image-rendering: -webkit-optimize-contrast;
+    transform: translateZ(0);
+}
+
+.dark .logo-img {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35)) brightness(1.08);
+}
+
+/* Extra Safari/iOS fix */
+@supports (-webkit-touch-callout: none) {
+    .logo-img {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Lightbox improvements – especially for iPhone/Safari */
 #image-container {
-    cursor: grab;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: pan-y;   /* allows vertical scroll of page if needed */
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+    transform: translateZ(0);
 }
 
-#image-container:active {
-    cursor: grabbing;
+#lightbox-img {
+    image-rendering: -webkit-optimize-contrast;
+    transform: translateZ(0);
 }
 
+/* Better vertical centering on mobile Safari */
+@supports (-webkit-touch-callout: none) {
+    #image-container {
+        height: 68vh !important;
+        max-height: 68vh;
+    }
+}
+
+/* Dots styling */
 #dots-container button {
     transition: all 0.25s ease;
+    width: 12px;
+    height: 12px;
+    margin: 0 6px;
 }
 
 #dots-container button:hover {
