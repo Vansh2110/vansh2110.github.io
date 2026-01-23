@@ -1,53 +1,248 @@
-// Mobile Menu
-const btn = document.getElementById('mobile-menu-btn');
-const menu = document.getElementById('mobile-menu');
-const links = document.querySelectorAll('.mobile-link');
-btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-links.forEach(link => link.addEventListener('click', () => menu.classList.add('hidden')));
+// Mobile Menu Toggle
+const mobileBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileLinks = document.querySelectorAll('.mobile-link');
 
-// Slider
-const slider = document.getElementById('catalog-slider');
-function scrollCatalog(d) {
-    slider.scrollBy({ left: d === 'left' ? -320 : 320, behavior: 'smooth' });
+mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+mobileLinks.forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+});
+
+// Catalogue Slider (horizontal scroll of product cards)
+const catalogueSlider = document.getElementById('catalogue-slider');
+
+let isCatalogueDragging = false;
+let catalogueStartX;
+let catalogueScrollLeft;
+
+function startCatalogueDrag(e) {
+    isCatalogueDragging = true;
+    catalogueSlider.classList.add('active');
+    catalogueStartX = (e.pageX || e.touches[0].pageX) - catalogueSlider.offsetLeft;
+    catalogueScrollLeft = catalogueSlider.scrollLeft;
 }
 
-// Navbar
-window.addEventListener('scroll', () => {
-    const nav = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-        nav.classList.add('shadow-md', 'h-16'); nav.classList.remove('h-20');
+function endCatalogueDrag() {
+    isCatalogueDragging = false;
+    catalogueSlider.classList.remove('active');
+}
+
+function moveCatalogueDrag(e) {
+    if (!isCatalogueDragging) return;
+    e.preventDefault();
+    const x = (e.pageX || e.touches[0].pageX) - catalogueSlider.offsetLeft;
+    const walk = (x - catalogueStartX) * 2; // ×2 = faster feel
+    catalogueSlider.scrollLeft = catalogueScrollLeft - walk;
+}
+
+// Mouse events
+catalogueSlider.addEventListener('mousedown', startCatalogueDrag);
+catalogueSlider.addEventListener('mouseleave', endCatalogueDrag);
+catalogueSlider.addEventListener('mouseup', endCatalogueDrag);
+catalogueSlider.addEventListener('mousemove', moveCatalogueDrag);
+
+// Touch events
+catalogueSlider.addEventListener('touchstart', startCatalogueDrag);
+catalogueSlider.addEventListener('touchend', endCatalogueDrag);
+catalogueSlider.addEventListener('touchmove', moveCatalogueDrag);
+
+// Arrow buttons for catalogue slider
+function scrollCatalogue(direction) {
+    const scrollAmount = 320; // card width + gap
+    if (direction === 'left') {
+        catalogueSlider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     } else {
-        nav.classList.remove('shadow-md', 'h-16'); nav.classList.add('h-20');
+        catalogueSlider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+}
+
+// ────────────────────────────────────────────────
+//   Lightbox / Gallery
+// ────────────────────────────────────────────────
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const dotsContainer = document.getElementById('dots-container');
+const closeBtn = document.getElementById('close-lightbox');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const imageContainer = document.getElementById('image-container');
+
+let currentImages = [];
+let currentIndex = 0;
+let touchStartX = 0;
+let touchEndX = 0;
+let isLightboxDragging = false;
+let lightboxStartX = 0;
+
+// Debounce function to prevent skipping on fast key presses
+function debounce(fn, delay = 140) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn.apply(this, args), delay);
+    };
+}
+
+const debouncedPrev = debounce(() => {
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    updateImageAndDots();
+}, 140);
+
+const debouncedNext = debounce(() => {
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    updateImageAndDots();
+}, 140);
+
+// Preload adjacent images for smoother transitions
+function preloadAdjacent() {
+    if (currentIndex > 0) {
+        const img = new Image();
+        img.src = currentImages[currentIndex - 1];
+    }
+    if (currentIndex < currentImages.length - 1) {
+        const img = new Image();
+        img.src = currentImages[currentIndex + 1];
+    }
+}
+
+function updateImageAndDots() {
+    lightboxImg.src = currentImages[currentIndex];
+    preloadAdjacent();
+
+    dotsContainer.innerHTML = '';
+    currentImages.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${
+            i === currentIndex ? 'bg-blue-500 scale-125' : 'bg-white/50 hover:bg-white/80'
+        }`;
+        dot.addEventListener('click', () => {
+            currentIndex = i;
+            updateImageAndDots();
+        });
+        dotsContainer.appendChild(dot);
+    });
+}
+
+// Open lightbox when clicking a product card
+document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', () => {
+        currentImages = JSON.parse(card.dataset.images || '[]');
+        if (currentImages.length === 0) return;
+
+        currentIndex = 0;
+        updateImageAndDots();
+        lightbox.classList.remove('hidden');
+        setTimeout(() => lightbox.classList.remove('opacity-0'), 20);
+    });
+});
+
+// Navigation functions
+function goToPrev() { debouncedPrev(); }
+function goToNext() { debouncedNext(); }
+
+prevBtn.addEventListener('click', goToPrev);
+nextBtn.addEventListener('click', goToNext);
+
+// Touch swipe
+imageContainer.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+imageContainer.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 60) {
+        if (diff > 0) goToNext();
+        else goToPrev();
     }
 });
 
-// --- GOOGLE SHEET CONNECTION ---
+// Mouse drag (optional)
+imageContainer.addEventListener('mousedown', e => {
+    isLightboxDragging = true;
+    lightboxStartX = e.clientX;
+    imageContainer.style.cursor = 'grabbing';
+});
 
-// PASTE YOUR GOOGLE WEB APP URL HERE
+imageContainer.addEventListener('mousemove', e => {
+    if (!isLightboxDragging) return;
+});
+
+imageContainer.addEventListener('mouseup', e => {
+    if (!isLightboxDragging) return;
+    isLightboxDragging = false;
+    imageContainer.style.cursor = 'grab';
+
+    const diff = lightboxStartX - e.clientX;
+    if (Math.abs(diff) > 60) {
+        if (diff > 0) goToNext();
+        else goToPrev();
+    }
+});
+
+imageContainer.addEventListener('mouseleave', () => {
+    isLightboxDragging = false;
+    imageContainer.style.cursor = 'grab';
+});
+
+// Close lightbox
+closeBtn.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+});
+
+function closeLightbox() {
+    lightbox.classList.add('opacity-0');
+    setTimeout(() => lightbox.classList.add('hidden'), 300);
+}
+
+// Keyboard navigation (one clean listener)
+window.addEventListener('keydown', e => {
+    if (lightbox.classList.contains('hidden')) return;
+
+    if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goToPrev();           // left = previous image
+    }
+    else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        goToNext();           // right = next image
+    }
+    else if (e.key === 'Escape') {
+        closeLightbox();
+    }
+}, { passive: false });
+
+// ────────────────────────────────────────────────
+//   Google Sheet Form Submission
+// ────────────────────────────────────────────────
+
 const scriptURL = 'https://script.google.com/macros/s/AKfycbwLLRmiuConet7hmM-ZtNTqQHPUAupWWw5yDhSBROY-Uh3-fVrH7KYCECL_2-_jtaZI/exec';
 
 const form = document.querySelector('#contact-form');
 const submitBtn = document.querySelector('#submit-btn');
 
-form.addEventListener('submit', e => {
-    e.preventDefault();
-    
-    // Loading State
-    const originalBtnText = submitBtn.innerText;
-    submitBtn.innerText = "Sending...";
-    submitBtn.disabled = true;
+if (form && submitBtn) {
+    form.addEventListener('submit', e => {
+        e.preventDefault();
 
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-            alert("Success! Your message has been sent. We will get back to you soon.");
-            form.reset();
-            submitBtn.innerText = originalBtnText;
-            submitBtn.disabled = false;
-        })
-        .catch(error => {
-            console.error('Error!', error.message);
-            alert("Error! Message not sent.");
-            submitBtn.innerText = originalBtnText;
-            submitBtn.disabled = false;
-        });
-});
+        const originalText = submitBtn.innerText;
+        submitBtn.innerText = "Sending...";
+        submitBtn.disabled = true;
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(() => {
+                alert("Success! Your message has been sent. We will get back to you soon.");
+                form.reset();
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert("Error! Message not sent. Please try again.");
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            });
+    });
+}
