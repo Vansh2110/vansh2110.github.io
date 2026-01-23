@@ -8,7 +8,7 @@ mobileLinks.forEach(link => {
     link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
 });
 
-// Catalogue Slider (horizontal scroll of product cards)
+// Catalogue Slider
 const catalogueSlider = document.getElementById('catalogue-slider');
 
 let isCatalogueDragging = false;
@@ -31,24 +31,21 @@ function moveCatalogueDrag(e) {
     if (!isCatalogueDragging) return;
     e.preventDefault();
     const x = (e.pageX || e.touches[0].pageX) - catalogueSlider.offsetLeft;
-    const walk = (x - catalogueStartX) * 2; // ×2 = faster feel
+    const walk = (x - catalogueStartX) * 2;
     catalogueSlider.scrollLeft = catalogueScrollLeft - walk;
 }
 
-// Mouse events
 catalogueSlider.addEventListener('mousedown', startCatalogueDrag);
 catalogueSlider.addEventListener('mouseleave', endCatalogueDrag);
 catalogueSlider.addEventListener('mouseup', endCatalogueDrag);
 catalogueSlider.addEventListener('mousemove', moveCatalogueDrag);
 
-// Touch events
-catalogueSlider.addEventListener('touchstart', startCatalogueDrag);
+catalogueSlider.addEventListener('touchstart', startCatalogueDrag, { passive: false });
 catalogueSlider.addEventListener('touchend', endCatalogueDrag);
-catalogueSlider.addEventListener('touchmove', moveCatalogueDrag);
+catalogueSlider.addEventListener('touchmove', moveCatalogueDrag, { passive: false });
 
-// Arrow buttons for catalogue slider
 function scrollCatalogue(direction) {
-    const scrollAmount = 320; // card width + gap
+    const scrollAmount = 320;
     if (direction === 'left') {
         catalogueSlider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     } else {
@@ -57,7 +54,7 @@ function scrollCatalogue(direction) {
 }
 
 // ────────────────────────────────────────────────
-//   Lightbox / Gallery
+// Lightbox / Gallery
 // ────────────────────────────────────────────────
 
 const lightbox = document.getElementById('lightbox');
@@ -75,7 +72,6 @@ let touchEndX = 0;
 let isLightboxDragging = false;
 let lightboxStartX = 0;
 
-// Debounce function to prevent skipping on fast key presses
 function debounce(fn, delay = 140) {
     let timeout;
     return function(...args) {
@@ -94,16 +90,9 @@ const debouncedNext = debounce(() => {
     updateImageAndDots();
 }, 140);
 
-// Preload adjacent images for smoother transitions
 function preloadAdjacent() {
-    if (currentIndex > 0) {
-        const img = new Image();
-        img.src = currentImages[currentIndex - 1];
-    }
-    if (currentIndex < currentImages.length - 1) {
-        const img = new Image();
-        img.src = currentImages[currentIndex + 1];
-    }
+    if (currentIndex > 0) new Image().src = currentImages[currentIndex - 1];
+    if (currentIndex < currentImages.length - 1) new Image().src = currentImages[currentIndex + 1];
 }
 
 function updateImageAndDots() {
@@ -124,12 +113,10 @@ function updateImageAndDots() {
     });
 }
 
-// Open lightbox when clicking a product card
 document.querySelectorAll('.product-card').forEach(card => {
     card.addEventListener('click', () => {
         currentImages = JSON.parse(card.dataset.images || '[]');
         if (currentImages.length === 0) return;
-
         currentIndex = 0;
         updateImageAndDots();
         lightbox.classList.remove('hidden');
@@ -137,17 +124,16 @@ document.querySelectorAll('.product-card').forEach(card => {
     });
 });
 
-// Navigation functions
 function goToPrev() { debouncedPrev(); }
 function goToNext() { debouncedNext(); }
 
 prevBtn.addEventListener('click', goToPrev);
 nextBtn.addEventListener('click', goToNext);
 
-// Touch swipe
+// Touch swipe – with passive: false for better iOS control
 imageContainer.addEventListener('touchstart', e => {
     touchStartX = e.changedTouches[0].screenX;
-});
+}, { passive: false });
 
 imageContainer.addEventListener('touchend', e => {
     touchEndX = e.changedTouches[0].screenX;
@@ -156,9 +142,9 @@ imageContainer.addEventListener('touchend', e => {
         if (diff > 0) goToNext();
         else goToPrev();
     }
-});
+}, { passive: false });
 
-// Mouse drag (optional)
+// Mouse drag
 imageContainer.addEventListener('mousedown', e => {
     isLightboxDragging = true;
     lightboxStartX = e.clientX;
@@ -173,7 +159,6 @@ imageContainer.addEventListener('mouseup', e => {
     if (!isLightboxDragging) return;
     isLightboxDragging = false;
     imageContainer.style.cursor = 'grab';
-
     const diff = lightboxStartX - e.clientX;
     if (Math.abs(diff) > 60) {
         if (diff > 0) goToNext();
@@ -186,7 +171,7 @@ imageContainer.addEventListener('mouseleave', () => {
     imageContainer.style.cursor = 'grab';
 });
 
-// Close lightbox
+// Close
 closeBtn.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e => {
     if (e.target === lightbox) closeLightbox();
@@ -197,27 +182,23 @@ function closeLightbox() {
     setTimeout(() => lightbox.classList.add('hidden'), 300);
 }
 
-// Keyboard navigation (one clean listener)
+// Keyboard
 window.addEventListener('keydown', e => {
     if (lightbox.classList.contains('hidden')) return;
-
     if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        goToPrev();           // left = previous image
+        goToPrev();
     }
     else if (e.key === 'ArrowRight') {
         e.preventDefault();
-        goToNext();           // right = next image
+        goToNext();
     }
     else if (e.key === 'Escape') {
         closeLightbox();
     }
 }, { passive: false });
 
-// ────────────────────────────────────────────────
-//   Google Sheet Form Submission
-// ────────────────────────────────────────────────
-
+// Google Sheet Form
 const scriptURL = 'https://script.google.com/macros/s/AKfycbwLLRmiuConet7hmM-ZtNTqQHPUAupWWw5yDhSBROY-Uh3-fVrH7KYCECL_2-_jtaZI/exec';
 
 const form = document.querySelector('#contact-form');
@@ -226,7 +207,6 @@ const submitBtn = document.querySelector('#submit-btn');
 if (form && submitBtn) {
     form.addEventListener('submit', e => {
         e.preventDefault();
-
         const originalText = submitBtn.innerText;
         submitBtn.innerText = "Sending...";
         submitBtn.disabled = true;
